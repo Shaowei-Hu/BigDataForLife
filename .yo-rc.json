@@ -1,0 +1,41 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.shaowei.bigdatalife",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "4.7.0",
+    "baseName": "BigDataForLife",
+    "packageName": "com.shaowei.bigdatalife",
+    "packageFolder": "com/shaowei/bigdatalife",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": false,
+    "websocket": "spring-websocket",
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "elasticsearch",
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSocialSignIn": true,
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "9d9d1f77f7a0feceefcd3e73eaea807e04096f2f",
+    "clientFramework": "angularX",
+    "useSass": true,
+    "clientPackageManager": "yarn",
+    "applicationType": "monolith",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": [
+      "en",
+      "zh-cn",
+      "zh-tw",
+      "fr"
+    ]
+  }
+}

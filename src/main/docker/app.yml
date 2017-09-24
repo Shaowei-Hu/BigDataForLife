@@ -1,0 +1,19 @@
+version: '2'
+services:
+    bigdataforlife-app:
+        image: bigdataforlife
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://bigdataforlife-mysql:3306/bigdataforlife?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+            - SPRING_DATA_ELASTICSEARCH_CLUSTER_NODES=bigdataforlife-elasticsearch:9300
+        ports:
+            - 8080:8080
+    bigdataforlife-mysql:
+        extends:
+            file: mysql.yml
+            service: bigdataforlife-mysql
+    bigdataforlife-elasticsearch:
+        extends:
+            file: elasticsearch.yml
+            service: bigdataforlife-elasticsearch
