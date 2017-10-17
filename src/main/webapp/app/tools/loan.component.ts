@@ -18,6 +18,7 @@ export class LoanComponent implements OnInit {
     principalG: number;
     monthes: number;
     rate: number;
+    interestG: number;
     monthlyPayment: number;
     amortization: any[];
     Math: any;
@@ -34,6 +35,7 @@ export class LoanComponent implements OnInit {
         this.principalG = 0;
         this.monthes = 0;
         this.rate = 0;
+        this.interestG = 0;
         this.monthlyPayment = 0;
         this.Math = Math;
     }
@@ -57,6 +59,7 @@ export class LoanComponent implements OnInit {
             const interestM = balance * monthlyRate;
             const principalM = monthlyPayment - interestM;
             balance = balance - principalM;
+            this.interestG += interestM;
             amortization.push({principalM, interestM, balance});
         }
         this.amortization = amortization;
