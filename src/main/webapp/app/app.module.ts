@@ -7,6 +7,7 @@ import { Ng2Webstorage } from 'ng2-webstorage';
 import { BigDataForLifeSharedModule, UserRouteAccessService } from './shared';
 import { BigDataForLifeHomeModule } from './home/home.module';
 import { BigDataForLifeCityModule } from './city/city.module';
+import { BigDataForLifeLoanModule } from './tools/loan.module';
 import { BigDataForLifeAdminModule } from './admin/admin.module';
 import { BigDataForLifeAccountModule } from './account/account.module';
 import { BigDataForLifeEntityModule } from './entities/entity.module';
@@ -36,6 +37,7 @@ import {
         BigDataForLifeSharedModule,
         BigDataForLifeHomeModule,
         BigDataForLifeCityModule,
+        BigDataForLifeLoanModule,
         BigDataForLifeAdminModule,
         BigDataForLifeAccountModule,
         BigDataForLifeEntityModule,

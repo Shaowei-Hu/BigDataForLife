@@ -24,3 +24,6 @@ only screen and (                min-resolution: 2dppx) {
         background-size: contain;
     }
 }
+
+@import '../../content/scss/style.scss';
+@import '../../content/scss/jqvmap.css';
