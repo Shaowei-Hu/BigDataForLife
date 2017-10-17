@@ -1,0 +1,50 @@
+<div class="content">
+    <div class="form">
+        <div>
+            <label>Principal:</label>
+            <input type="text" id="principal" [(ngModel)]="principalG"/>
+        </div>
+        <div>
+            <label>Monthes:</label>
+            <input type="text" id="monthes" [(ngModel)]="monthes"/>
+        </div>
+        <div>
+            <label htmlFor="rate">Rate:</label>
+            <input type="text" id="rate" [(ngModel)]="rate"/>
+        </div>
+        <div>
+            <label htmlFor="calcBtn"></label>
+            <button id="calcBtn" (click)="calculate()">Calculate</button>
+        </div>
+    </div>
+    <h2>Monthly Payment: <span id="monthlyPayment" class="currency">{{monthlyPayment}}</span></h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Month</th>
+            <th class="principal">Principal</th>
+            <th class="stretch"></th>
+            <th class="interest">Interest</th>
+            <th>Balance</th>
+        </tr>
+        </thead>
+        <tbody id="amortization" *ngIf="amortization">
+            <tr *ngFor="let month of amortization; let i = index">
+                <td>{{i + 1}}</td>
+                <td class="currency">{{this.Math.round(month.principalM)}}</td>
+                <td class="stretch">
+                    <div class="flex">
+                        <div class="bar principal"
+                            [style]="getBarStyle(month.principalM)">
+                        </div>
+                        <div class="bar interest"
+                            [style]="getBarStyle(month.interestM)">
+                        </div>
+                    </div>
+                </td>
+                <td class="currency left">{{this.Math.round(month.interestM)}}</td>
+                <td class="currency">{{this.Math.round(month.balance)}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
