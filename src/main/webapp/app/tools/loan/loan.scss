@@ -1,0 +1,60 @@
+
+.jumbotron {
+    text-align: center;
+//    background-color: transparent;
+  }
+
+.loan-info tr td{
+    padding: 1.5rem;
+    font-size: 1.5rem;
+}
+
+th,
+td {
+    border: solid 1px #EEEEEE !important;
+    padding: 1px 4px;
+}
+
+// label {
+//     display: inline-block;
+//     width: 80px;
+//     text-align: right;
+//     margin-right: 4px;
+// }
+
+.content {
+    padding: 20px;
+}
+
+.bar {
+    display: inline-block;
+    border: none;
+    height: 8px;
+}
+
+.bar.principal {
+    background-color: #0288D1;
+    margin-right:1px;
+}
+
+.bar.interest {
+    background-color: #EF6C00;
+    margin-left:1px;
+}
+
+.stretch {
+    width: 100%;
+    padding-left:0;
+    padding-right:0;
+}
+
+.flex {
+    display: -webkit-flex;
+    display: flex;
+}
+
+.left {
+    text-align: left;
+}
+
+

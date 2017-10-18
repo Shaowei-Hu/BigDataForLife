@@ -1,0 +1,9 @@
+<!-- <script src="node_modules/chart.js/src/chart.js"></script> -->
+<div style="display: block">
+  <canvas baseChart
+          [data]="chartData"
+          [labels]="chartLabels"
+          [chartType]="chartType"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+</div>

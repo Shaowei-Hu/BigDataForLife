@@ -1,17 +1,17 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { BigDataForLifeSharedModule } from '../shared';
+import { BigDataForLifeSharedModule } from '../../shared';
 
-import { LOAN_ROUTE, LoanComponent } from './';
+import { ESTATE_INVESTMENT_ROUTE, EstateInvestmentComponent } from './';
 
 @NgModule({
     imports: [
         BigDataForLifeSharedModule,
-        RouterModule.forRoot([ LOAN_ROUTE ], { useHash: true })
+        RouterModule.forRoot([ ESTATE_INVESTMENT_ROUTE ], { useHash: true })
     ],
     declarations: [
-        LoanComponent,
+        EstateInvestmentComponent,
     ],
     entryComponents: [
     ],
@@ -19,4 +19,4 @@ import { LOAN_ROUTE, LoanComponent } from './';
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class BigDataForLifeLoanModule {}
+export class BigDataForLifeEstateInvestmentModule {}

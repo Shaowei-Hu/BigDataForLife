@@ -3,7 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { Account, LoginModalService, Principal } from '../shared';
+import { Account, LoginModalService, Principal } from '../../shared';
 
 @Component({
     selector: 'jhi-loan',
@@ -32,9 +32,9 @@ export class LoanComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.principalG = 0;
-        this.monthes = 0;
-        this.rate = 0;
+        // this.principalG = 0;
+        // this.monthes = 0;
+        // this.rate = 0;
         this.interestG = 0;
         this.monthlyPayment = 0;
         this.Math = Math;
@@ -55,6 +55,7 @@ export class LoanComponent implements OnInit {
         const monthlyRate = this.rate / 100 / 12;
         let balance = this.principalG;
         const amortization = [];
+        this.interestG = 0;
         for (let m = 0; m < this.monthes; m ++) {
             const interestM = balance * monthlyRate;
             const principalM = monthlyPayment - interestM;

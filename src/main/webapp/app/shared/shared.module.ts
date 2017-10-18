@@ -19,10 +19,14 @@ import {
     JhiLoginModalComponent
 } from './';
 
+import { MyRestaurantChartModule } from './chart/chart.module';
+import { ChartComponent } from './chart/chart.component';
+
 @NgModule({
     imports: [
         BigDataForLifeSharedLibsModule,
-        BigDataForLifeSharedCommonModule
+        BigDataForLifeSharedCommonModule,
+        MyRestaurantChartModule
     ],
     declarations: [
         JhiSocialComponent,
@@ -48,7 +52,8 @@ import {
         JhiSocialComponent,
         JhiLoginModalComponent,
         HasAnyAuthorityDirective,
-        DatePipe
+        DatePipe,
+        ChartComponent
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 

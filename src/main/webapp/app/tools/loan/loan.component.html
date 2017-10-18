@@ -1,0 +1,86 @@
+<div class="container">
+    <jhi-alert-error></jhi-alert-error>
+    <div class="jumbotron">
+        <h1>Mortgage evaluation</h1>
+        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
+            nibh, ut fermentum massa justo sit amet.</p>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_name">Principal:</label>
+                        <input type="text" class="form-control" name="name" id="field_name" [(ngModel)]="principalG" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_status">Monthes:</label>
+                        <input type="text" class="form-control" name="status" id="field_status" [(ngModel)]="monthes" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_clientNumber">Rate:</label>
+                        <input type="text" class="form-control" name="clientNumber" id="field_clientNumber" [(ngModel)]="rate" />
+                    </div>
+                    <div>
+                        <button id="calcBtn" class="btn btn-info" (click)="calculate()">Calculate</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-striped loan-info">
+                        <tbody>
+                            <tr>
+                                <td><span>Monthly Payment: </span></td>
+                                <td><span id="monthlyPayment" class="currency">{{monthlyPayment | currency:'EUR':true:'1.2-2'}}</span></td>
+                            </tr>
+                            <tr>
+                                <td><span>Total interest: </span></td>
+                                <td><span id="monthlyPayment" class="currency">{{interestG | currency:'EUR':true:'1.2-2'}}</span></td>
+                            </tr>
+                        </tbody>
+                    </table> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-12">
+            <div class="card" *ngIf="amortization">
+                <div class="card-body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th class="principal">Principal</th>
+                                <th class="stretch"></th>
+                                <th class="interest">Interest</th>
+                                <th>Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody id="amortization">
+                            <tr *ngFor="let month of amortization; let i = index">
+                                <td>{{i + 1}}</td>
+                                <td class="currency">{{month.principalM | currency:'EUR':true:'1.2-2'}}</td>
+                                <td class="stretch">
+                                    <div class="flex">
+                                        <div class="bar principal" [style]="getBarStyle(month.principalM)">
+                                        </div>
+                                        <div class="bar interest" [style]="getBarStyle(month.interestM)">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="currency left">{{month.interestM | currency:'EUR':true:'1.2-2'}}</td>
+                                <td class="currency">{{month.balance | currency:'EUR':true:'1.2-2'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

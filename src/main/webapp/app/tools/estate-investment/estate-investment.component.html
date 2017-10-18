@@ -1,0 +1,290 @@
+<div class="container">
+    <jhi-alert-error></jhi-alert-error>
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+        <h1>Estate investment evaluation</h1>
+        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
+            nibh, ut fermentum massa justo sit amet.</p>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <div class="card">
+                <div class="card-header">
+                    Information
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_name">Name:</label>
+                        <input type="text" class="form-control" name="name" id="field_name" placeholder="Your name" [(ngModel)]="name" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_status">Telephone:</label>
+                        <input type="text" class="form-control" name="status" id="field_status" placeholder="Your phone number" [(ngModel)]="telephone" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_clientNumber">Email:</label>
+                        <input type="text" class="form-control" name="clientNumber" id="field_clientNumber" placeholder="Your email address" [(ngModel)]="email" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_clientNumber">Revenue:</label>
+                        <section class="d-flex justify-content-between">
+                            <div class="">
+                            <input type="radio" id="control_01" name="taxRate" value="0.2" [(ngModel)]="taxRate">
+                            <label for="control_01">
+                                <span>20%</span>
+                                <ng-template #popContent20>(长期居住地不在法国本土的海外公民)</ng-template>
+                                <span class="badge badge-pill badge-primary" triggers="mouseenter:mouseleave" [ngbPopover]="popContent20" popoverTitle="Information">!</span>
+                            </label>
+                            </div>
+            
+                            <div class="">
+                            <input type="radio" id="control_02" name="taxRate" value="0" [(ngModel)]="taxRate">
+                            <label for="control_02">
+                                <span>0%</span>
+                                <ng-template #popContent0>(家庭报税收入小于9710欧)</ng-template>
+                                <span class="badge badge-pill badge-primary" triggers="mouseenter:mouseleave" [ngbPopover]="popContent0" popoverTitle="Information">!</span>
+                            </label>
+                            </div>
+            
+                            <div class="">				
+                            <input type="radio" id="control_03" name="taxRate" value="0.14" [(ngModel)]="taxRate">
+                            <label for="control_03">
+                                <span>14%</span>
+                                <ng-template #popContent14> (家庭报税收入收入 9711-26818欧)</ng-template>
+                                <span class="badge badge-pill badge-primary" triggers="mouseenter:mouseleave" [ngbPopover]="popContent14" popoverTitle="Information">!</span>
+                            </label>
+                            </div>
+            
+                            <div class="">
+                            <input type="radio" id="control_04" name="taxRate" value="0.3" [(ngModel)]="taxRate">
+                            <label for="control_04">
+                                <span> 30%</span>
+                                <ng-template #popContent30>(家庭报税收入收入 26819-71898欧)</ng-template>
+                                <span class="badge badge-pill badge-primary" triggers="mouseenter:mouseleave" [ngbPopover]="popContent30" popoverTitle="Information">!</span>
+                            </label>
+                            </div>
+            
+                            <div class="">
+                            <input type="radio" id="control_05" name="taxRate" value="0.4" [(ngModel)]="taxRate">
+                            <label for="control_05">
+                                <span>41%</span>
+                                <ng-template #popContent40> (家庭报税收入71899-152260欧</ng-template>
+                                <span class="badge badge-pill badge-primary" triggers="mouseenter:mouseleave" [ngbPopover]="popContent40" popoverTitle="Information">!</span>
+                            </label>
+                            </div>
+
+                            <div class="">
+                                <input type="radio" id="control_06" name="taxRate" value="0.45" [(ngModel)]="taxRate">
+                                <label for="control_06">
+                                    <span>45%</span>
+                                    <ng-template #popContent45> (家庭报税收入 大于152260欧)</ng-template>
+                                    <span class="badge badge-pill badge-primary" triggers="mouseenter:mouseleave" [ngbPopover]="popContent45" popoverTitle="Information">!</span>
+                                </label>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="form-group">
+                            <label class="form-control-label" for="field_clientNumber">房产情况:</label>
+                            <section class="d-flex justify-content-between">
+                                <div class="">
+                                <input type="radio" id="control_07" name="situation" value="11" [(ngModel)]="situation">
+                                <label for="control_07">
+                                    <span>准备够入自住房</span>
+                                </label>
+                                </div>
+                
+                                <div class="">
+                                <input type="radio" id="control_08" name="situation" value="111" [(ngModel)]="situation">
+                                <label for="control_08">
+                                    <span>已有自住房，准备够入投资房</span>
+                                </label>
+                                </div>
+                            </section>
+                            <section class="d-flex justify-content-between">
+                                <div class="">				
+                                <input type="radio" id="control_09" name="situation" value="C11" [(ngModel)]="situation">
+                                <label for="control_09">
+                                    <span>已有自住房，已经够入投资房</span>
+                                </label>
+                                </div>
+                
+                                <div class="">
+                                <input type="radio" id="control_10" name="situation" value="C11111" [(ngModel)]="situation">
+                                <label for="control_10">
+                                    <span>其他</span>
+                                </label>
+                                </div>
+                            </section>
+                    </div>
+
+                    <div class="form-group">
+                            <label class="form-control-label" for="field_clientNumber">房产（意向）位置:</label>
+                            <section class="d-flex justify-content-between">
+                                <div class="">
+                                <input type="radio" id="control_11" name="intention" value="12" [(ngModel)]="intention">
+                                <label for="control_11">
+                                    <span>小巴黎</span>
+                                </label>
+                                </div>
+
+                                <div class="">				
+                                <input type="radio" id="control_12" name="intention" value="C121" [(ngModel)]="intention">
+                                <label for="control_12">
+                                    <span>大巴黎</span>
+                                </label>
+                                </div>
+                
+                                <div class="">
+                                <input type="radio" id="control_13" name="intention" value="C111211" [(ngModel)]="intention">
+                                <label for="control_13">
+                                    <span>其他</span>
+                                </label>
+                                </div>
+                            </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+            <div class="col-8">
+                <div class="card">
+                    <div class="card-header">
+                        Estate information
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label class="form-control-label" for="field_name">总房价（包含公证费及中介费:</label>
+                            <input type="text" class="form-control" name="name" id="field_name" placeholder="ex 200000" [(ngModel)]="estateCapital" />
+                        </div>
+                        <!-- <div class="form-group">
+                            <label class="form-control-label" for="field_status">剩余贷款数贷款利率 (不含保险):</label>
+                            <input type="text" class="form-control" name="status" id="field_status" placeholder="ex 1.91" [(ngModel)]="principalBalance" />
+                        </div> -->
+                        <div class="form-group">
+                                <label class="form-control-label" for="field_name">剩余贷款数贷款利率 (不含保险):</label>
+                                <input type="text" class="form-control" name="name" id="field_name" [(ngModel)]="principalG" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label" for="field_status">剩余贷Monthes数:</label>
+                                <input type="text" class="form-control" name="status" id="field_status" [(ngModel)]="monthes" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label" for="field_clientNumber">Rate:</label>
+                                <input type="text" class="form-control" name="clientNumber" id="field_clientNumber" [(ngModel)]="rate" />
+                            </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="field_clientNumber">每月物业费:</label>
+                            <input type="text" class="form-control" name="clientNumber" id="field_clientNumber" placeholder="ex 120" [(ngModel)]="fee" />
+                        </div>
+                        <!-- <div class="form-group">
+                            <label class="form-control-label" for="field_clientNumber">家具:</label>
+                            <section class="d-flex justify-content-between">
+                                <div class="">
+                                <input type="radio" id="control_14" name="furniture" value="true" [(ngModel)]="furniture">
+                                <label for="control_14">
+                                    <span>Yes</span>
+                                </label>
+                                </div>
+
+                                <div class="">				
+                                <input type="radio" id="control_15" name="furniture" value="false" [(ngModel)]="furniture">
+                                <label for="control_15">
+                                    <span>No</span>
+                                </label>
+                                </div>
+                            </section>
+                        </div> -->
+                        <div class="form-group">
+                            <label class="form-control-label" for="field_clientNumber">月毛租金:</label>
+                            <input type="text" class="form-control" name="clientNumber" id="field_clientNumber" placeholder="ex 800" [(ngModel)]="rent" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="field_clientNumber">月含charge租金:</label>
+                            <ng-template #popContentC>ex 880 （800+120*2/3）charge locative 约为整个charge 的2/3</ng-template>
+                            <span class="badge badge-pill badge-primary" triggers="mouseenter:mouseleave" [ngbPopover]="popContentC" popoverTitle="Information">!</span>
+                            <input type="text" class="form-control" name="clientNumber" id="field_clientNumber" placeholder="ex 880" [(ngModel)]="rentWithFee" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="field_clientNumber">每年才:</label>
+                            <input type="text" class="form-control" name="clientNumber" id="field_clientNumber" placeholder="ex 1200" [(ngModel)]="propertyTax" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="field_status">每年出租总月数:</label>
+                            <ng-template #popContent>ex 11.5/12 请填写0-12之间的小数考虑到换房客的空档期，我们建议填写11.8 
+                                (une semaine par un pour changement de locataire)</ng-template>
+                            <span class="badge badge-pill badge-primary" triggers="mouseenter:mouseleave" [ngbPopover]="popContent" popoverTitle="Information">!</span>
+                            <input type="text" class="form-control" name="status" id="field_status" placeholder="Your phone number" [(ngModel)]="month"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="field_clientNumber">每年其他费用（有发票部分）:</label>
+                            <input type="text" class="form-control" name="clientNumber" id="field_clientNumber" placeholder="ex 400 管理费 维修费 装修费 等" [(ngModel)]="otherCosts"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="field_clientNumber">出租前首次装修花费（有发票部分）:</label>
+                            <input type="text" class="form-control" name="clientNumber" id="field_clientNumber" placeholder="ex 500" [(ngModel)]="renovationCosts" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="field_clientNumber">您对未来房价的预测:</label>
+                            <input type="text" class="form-control" name="clientNumber" id="field_clientNumber" [(ngModel)]="prediction" />
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="control_06" name="accepte" value="OTHER1" [(ngModel)]="accepte">
+                            <span><small>同意我们向您邮箱发布我们网站的最新信息与文章</small></span>
+                        </div>
+                        <div>
+                            <button id="calcBtn" class="btn btn-info float-right" (click)="calculate()">Calculate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <br>
+    <div class="row">
+        <div class="col-12" *ngIf="taxFONCIERREEL.length>0">
+                <chart-component [chartLabels]="axe" [chartData]="dataSet" [chartType]="'line'"></chart-component>
+        </div>
+    </div>
+
+    <!-- <div class="row">
+            <div class="col-12">
+                <div class="card" *ngIf="amortization">
+                    <div class="card-body">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Month</th>
+                                    <th class="principal">Principal</th>
+                                    <th class="stretch"></th>
+                                    <th class="interest">Interest</th>
+                                    <th>Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody id="amortization">
+                                <tr *ngFor="let month of amortization; let i = index">
+                                    <td>{{i + 1}}</td>
+                                    <td class="currency">{{month.principalM | currency:'EUR':true:'1.2-2'}}</td>
+                                    <td class="stretch">
+                                        <div class="flex">
+                                            <div class="bar principal" [style]="getBarStyle(month.principalM)">
+                                            </div>
+                                            <div class="bar interest" [style]="getBarStyle(month.interestM)">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="currency left">{{month.interestM | currency:'EUR':true:'1.2-2'}}</td>
+                                    <td class="currency">{{month.balance | currency:'EUR':true:'1.2-2'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    
+</div>
