@@ -16,15 +16,15 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label class="form-control-label" for="field_name">Name:</label>
-                        <input type="text" class="form-control" name="name" id="field_name" placeholder="Your name" [(ngModel)]="name" />
+                        <input type="text" class="form-control" name="name" required id="field_name" placeholder="Your name" [(ngModel)]="name" />
                     </div>
                     <div class="form-group">
                         <label class="form-control-label" for="field_status">Telephone:</label>
-                        <input type="text" class="form-control" name="status" id="field_status" placeholder="Your phone number" [(ngModel)]="telephone" />
+                        <input type="text" class="form-control" name="status" required id="field_status" placeholder="Your phone number" [(ngModel)]="telephone" />
                     </div>
                     <div class="form-group">
                         <label class="form-control-label" for="field_clientNumber">Email:</label>
-                        <input type="text" class="form-control" name="clientNumber" id="field_clientNumber" placeholder="Your email address" [(ngModel)]="email" />
+                        <input type="text" class="form-control" name="clientNumber" required id="field_clientNumber" placeholder="Your email address" [(ngModel)]="email" />
                     </div>
                     <div class="form-group">
                         <label class="form-control-label" for="field_clientNumber">Revenue:</label>
@@ -121,6 +121,19 @@
 
                     <div class="form-group">
                             <label class="form-control-label" for="field_clientNumber">房产（意向）位置:</label>
+
+                            <div class="btn-group" ngbRadioGroup name="intention" [(ngModel)]="intention">
+                                <label ngbButtonLabel class="btn-light">
+                                  <input ngbButton type="radio" [value]="12" > 小巴黎
+                                </label>
+                                <label ngbButtonLabel class="btn-light">
+                                  <input ngbButton type="radio" [value]="121"> 大巴黎
+                                </label>
+                                <label ngbButtonLabel class="btn-light">
+                                  <input ngbButton type="radio" [value]="122"> 其他
+                                </label>
+                              </div>
+
                             <section class="d-flex justify-content-between">
                                 <div class="">
                                 <input type="radio" id="control_11" name="intention" value="12" [(ngModel)]="intention">
@@ -130,14 +143,14 @@
                                 </div>
 
                                 <div class="">				
-                                <input type="radio" id="control_12" name="intention" value="C121" [(ngModel)]="intention">
+                                <input type="radio" id="control_12" name="intention" value="121" [(ngModel)]="intention">
                                 <label for="control_12">
                                     <span>大巴黎</span>
                                 </label>
                                 </div>
                 
                                 <div class="">
-                                <input type="radio" id="control_13" name="intention" value="C111211" [(ngModel)]="intention">
+                                <input type="radio" id="control_13" name="intention" value="122" [(ngModel)]="intention">
                                 <label for="control_13">
                                     <span>其他</span>
                                 </label>
@@ -157,8 +170,16 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <label class="form-control-label" for="field_name">总房价（包含公证费及中介费:</label>
-                            <input type="text" class="form-control" name="name" id="field_name" placeholder="ex 200000" [(ngModel)]="estateCapital" />
+                            <label class="form-control-label" for="estateCapital">总房价（包含公证费及中介费:</label>
+                            <input type="text" class="form-control" name="estateCapital" id="estateCapital" required minlength="2" placeholder="ex 200000" [(ngModel)]="estateCapital" />
+                            <div *ngIf="estateCapital.invalid && (estateCapital.dirty || estateCapital.touched)" class="alert alert-danger">
+                                <div *ngIf="estateCapital.errors.required">
+                                    Name is required.
+                                </div>
+                                <div *ngIf="estateCapital.errors.minlength">
+                                    Name must be at least 4 characters long.
+                                </div>
+                            </div>
                         </div>
                         <!-- <div class="form-group">
                             <label class="form-control-label" for="field_status">剩余贷款数贷款利率 (不含保险):</label>
@@ -166,19 +187,19 @@
                         </div> -->
                         <div class="form-group">
                                 <label class="form-control-label" for="field_name">剩余贷款数贷款利率 (不含保险):</label>
-                                <input type="text" class="form-control" name="name" id="field_name" [(ngModel)]="principalG" />
+                                <input type="text" class="form-control" name="name" required id="field_name" [(ngModel)]="principalG" />
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label" for="field_status">剩余贷Monthes数:</label>
-                                <input type="text" class="form-control" name="status" id="field_status" [(ngModel)]="monthes" />
+                                <input type="text" class="form-control" name="status" required id="field_status" [(ngModel)]="monthes" />
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label" for="field_clientNumber">Rate:</label>
-                                <input type="text" class="form-control" name="clientNumber" id="field_clientNumber" [(ngModel)]="rate" />
+                                <input type="text" class="form-control" name="clientNumber" required id="field_clientNumber" [(ngModel)]="rate" />
                             </div>
                         <div class="form-group">
                             <label class="form-control-label" for="field_clientNumber">每月物业费:</label>
-                            <input type="text" class="form-control" name="clientNumber" id="field_clientNumber" placeholder="ex 120" [(ngModel)]="fee" />
+                            <input type="text" class="form-control" name="clientNumber" required id="field_clientNumber" placeholder="ex 120" [(ngModel)]="fee" />
                         </div>
                         <!-- <div class="form-group">
                             <label class="form-control-label" for="field_clientNumber">家具:</label>
@@ -200,13 +221,13 @@
                         </div> -->
                         <div class="form-group">
                             <label class="form-control-label" for="field_clientNumber">月毛租金:</label>
-                            <input type="text" class="form-control" name="clientNumber" id="field_clientNumber" placeholder="ex 800" [(ngModel)]="rent" />
+                            <input type="text" class="form-control" name="clientNumber" required id="field_clientNumber" placeholder="ex 800" [(ngModel)]="rent" />
                         </div>
                         <div class="form-group">
                             <label class="form-control-label" for="field_clientNumber">月含charge租金:</label>
                             <ng-template #popContentC>ex 880 （800+120*2/3）charge locative 约为整个charge 的2/3</ng-template>
                             <span class="badge badge-pill badge-primary" triggers="mouseenter:mouseleave" [ngbPopover]="popContentC" popoverTitle="Information">!</span>
-                            <input type="text" class="form-control" name="clientNumber" id="field_clientNumber" placeholder="ex 880" [(ngModel)]="rentWithFee" />
+                            <input type="text" class="form-control" name="clientNumber" required id="field_clientNumber" placeholder="ex 880" [(ngModel)]="rentWithFee" />
                         </div>
                         <div class="form-group">
                             <label class="form-control-label" for="field_clientNumber">每年才:</label>

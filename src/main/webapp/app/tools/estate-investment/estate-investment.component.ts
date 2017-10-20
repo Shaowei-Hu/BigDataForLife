@@ -50,6 +50,8 @@ export class EstateInvestmentComponent implements OnInit {
     taxMICROBIC: number[];
     taxLMNPBICREEL: number[];
 
+    propertyIncomes: number[];
+
     dataSet: any[];
 
     constructor(
@@ -80,6 +82,8 @@ export class EstateInvestmentComponent implements OnInit {
         this.taxLMNPBICREEL = [];
         this.taxMICROBIC = [];
         this.taxMICROFONCIER = [];
+
+        this.propertyIncomes = [];
 
         this.dataSet = [];
     }
@@ -151,6 +155,17 @@ export class EstateInvestmentComponent implements OnInit {
         for (let i = 0; i < this.year; i ++) {
             const tax = 0;
             this.taxLMNPBICREEL.push(tax);
+        }
+    }
+
+    getRentalIncome() {
+        return this.rentWithFee * this.month - this.renovationCosts - this.otherCosts - this.monthlyPayment * 12 - this.propertyTax;
+    }
+
+    getPropertyIncome() {// !
+        for (let i = 0; i < this.year; i ++) {
+            const income = this.amortization[i].principalY + this.estateCapital * 0.92 * this.prediction;
+            this.propertyIncomes.push(income);
         }
     }
 
