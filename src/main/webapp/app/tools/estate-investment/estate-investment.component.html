@@ -250,41 +250,4 @@
                 <chart-component [chartLabels]="axe" [chartData]="dataSet" [chartType]="'line'"></chart-component>
         </div>
     </div>
-
-    <!-- <div class="row">
-            <div class="col-12">
-                <div class="card" *ngIf="amortization">
-                    <div class="card-body">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Month</th>
-                                    <th class="principal">Principal</th>
-                                    <th class="stretch"></th>
-                                    <th class="interest">Interest</th>
-                                    <th>Balance</th>
-                                </tr>
-                            </thead>
-                            <tbody id="amortization">
-                                <tr *ngFor="let month of amortization; let i = index">
-                                    <td>{{i + 1}}</td>
-                                    <td class="currency">{{month.principalM | currency:'EUR':true:'1.2-2'}}</td>
-                                    <td class="stretch">
-                                        <div class="flex">
-                                            <div class="bar principal" [style]="getBarStyle(month.principalM)">
-                                            </div>
-                                            <div class="bar interest" [style]="getBarStyle(month.interestM)">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="currency left">{{month.interestM | currency:'EUR':true:'1.2-2'}}</td>
-                                    <td class="currency">{{month.balance | currency:'EUR':true:'1.2-2'}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-    
 </div>

@@ -19,7 +19,7 @@ export class EstateInvestmentComponent implements OnInit {
     name: string;
     telephone: string;
     email: string;
-    taxRate: number;
+    taxRate: string;
     situation: string;
     intention: string;
 
@@ -62,18 +62,18 @@ export class EstateInvestmentComponent implements OnInit {
         this.accepte = true;
         this.year = 20;
 
-        // this.taxRate = 0.3;
-        // this.estateCapital = 240000;
-        // this.principalG = 150000;
-        // this.monthes = 230;
-        // this.rent = 800;
-        // this.rentWithFee = 880;
-        // this.renovationCosts = 500;
-        // this.otherCosts = 300;
-        // this.month = 10.5;
-        // this.fee = 100;
-        // this.rate = 1.25;
-        // this.propertyTax = 1400;
+        this.taxRate = '0.3';
+        this.estateCapital = 240000;
+        this.principalG = 150000;
+        this.monthes = 230;
+        this.rent = 800;
+        this.rentWithFee = 880;
+        this.renovationCosts = 500;
+        this.otherCosts = 300;
+        this.month = 10.5;
+        this.fee = 100;
+        this.rate = 1.25;
+        this.propertyTax = 1400;
 
         this.axe = [];
         this.taxFONCIERREEL = [];
@@ -85,6 +85,13 @@ export class EstateInvestmentComponent implements OnInit {
     }
 
     calculate() {
+        this.axe = [];
+        this.taxFONCIERREEL = [];
+        this.taxLMNPBICREEL = [];
+        this.taxMICROBIC = [];
+        this.taxMICROFONCIER = [];
+        this.dataSet = [];
+
         this.getAxe();
         this.getMonthlyPayment();
         this.getAmortizationByYear();
@@ -93,7 +100,10 @@ export class EstateInvestmentComponent implements OnInit {
         this.MICROBIC();
         this.LMNPBICREEL();
 
-        this.dataSet = [this.taxMICROFONCIER, this.taxFONCIERREEL, this.taxMICROBIC, this.taxLMNPBICREEL];
+        this.dataSet = [{data: this.taxMICROFONCIER, label: 'MICROFONCIER'},
+                        {data: this.taxFONCIERREEL, label: 'FONCIERREEL'},
+                        {data: this.taxMICROBIC, label: 'MICROBIC'},
+                        {data: this.taxLMNPBICREEL, label: 'LMNPBICREEL'}];
     }
 
     getAxe() {
@@ -105,7 +115,7 @@ export class EstateInvestmentComponent implements OnInit {
 
     MICROFONCIER() {
         for (let i = 0; i < this.year; i ++) {
-            const tax = this.rent * this.month * (1 - 0.3) * (0.155 + this.taxRate);
+            const tax = this.rent * this.month * (1 - 0.3) * (0.155 + Number(this.taxRate));
             this.taxMICROFONCIER.push(tax);
         }
     }
@@ -116,7 +126,7 @@ export class EstateInvestmentComponent implements OnInit {
             interest = this.amortization[0].interestY;
             console.log(interest);
         }
-        let tax = (this.rentWithFee * this.month - this.renovationCosts - this.otherCosts - interest - this.propertyTax) * (0.155 + this.taxRate);
+        let tax = (this.rentWithFee * this.month - this.renovationCosts - this.otherCosts - interest - this.propertyTax) * (0.155 + Number(this.taxRate));
         this.taxFONCIERREEL.push(tax);
         for (let i = 1; i < this.year; i ++) {
             if (i < this.amortization.length) {
@@ -124,7 +134,7 @@ export class EstateInvestmentComponent implements OnInit {
             } else {
                 interest = 0
             }
-            tax = (this.rentWithFee * this.month - this.otherCosts - interest) * (0.155 + this.taxRate);
+            tax = (this.rentWithFee * this.month - this.otherCosts - interest) * (0.155 + Number(this.taxRate));
             this.taxFONCIERREEL.push(tax);
         }
         console.log(this.taxFONCIERREEL);
@@ -132,7 +142,7 @@ export class EstateInvestmentComponent implements OnInit {
 
     MICROBIC() {
         for (let i = 0; i < this.year; i ++) {
-            const tax = this.rentWithFee * this.month * (1 - 0.5) * (0.155 + this.taxRate);
+            const tax = this.rentWithFee * this.month * (1 - 0.5) * (0.155 + Number(this.taxRate));
             this.taxMICROBIC.push(tax);
         }
     }
@@ -169,9 +179,5 @@ export class EstateInvestmentComponent implements OnInit {
     }
     this.amortization = amortization;
     console.log(this.amortization);
-    }
-
-    getBarStyle(num: number) {
-        return this.sanitizer.bypassSecurityTrustStyle('flex:' + num + ';-webkit-flex:' + num + ';');
     }
 }
