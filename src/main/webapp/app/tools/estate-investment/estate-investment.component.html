@@ -17,14 +17,32 @@
                     <div class="form-group">
                         <label class="form-control-label" for="field_name">Name:</label>
                         <input type="text" class="form-control" name="name" required id="field_name" placeholder="Your name" [(ngModel)]="name" />
+                        <div *ngIf="name.toString().dirty && name.toString().invalid">
+                            <small class="form-text text-danger"
+                               *ngIf="name.errors.required" jhiTranslate="settings.messages.validate.name.required">
+                                Your first name is required.
+                            </small>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label class="form-control-label" for="field_status">Telephone:</label>
-                        <input type="text" class="form-control" name="status" required id="field_status" placeholder="Your phone number" [(ngModel)]="telephone" />
+                        <label class="form-control-label" for="field_telephone">Telephone:</label>
+                        <input type="text" class="form-control" name="telephone" required id="field_telephone" placeholder="Your phone number" [(ngModel)]="telephone" />
+                        <div *ngIf="telephone.toString().dirty && telephone.toString().invalid">
+                            <small class="form-text text-danger"
+                               *ngIf="telephone.errors.required" jhiTranslate="settings.messages.validate.telephone.required">
+                                Your first name is required.
+                            </small>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label class="form-control-label" for="field_clientNumber">Email:</label>
-                        <input type="text" class="form-control" name="clientNumber" required id="field_clientNumber" placeholder="Your email address" [(ngModel)]="email" />
+                        <label class="form-control-label" for="field_email">Email:</label>
+                        <input type="text" class="form-control" name="email" required id="field_email" placeholder="Your email address" [(ngModel)]="email" />
+                        <div *ngIf="email.toString().dirty && email.toString().invalid">
+                            <small class="form-text text-danger"
+                               *ngIf="email.errors.required" jhiTranslate="settings.messages.validate.email.required">
+                                Your first email is required.
+                            </small>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="form-control-label" for="field_clientNumber">Revenue:</label>
@@ -172,7 +190,7 @@
                         <div class="form-group">
                             <label class="form-control-label" for="estateCapital">总房价（包含公证费及中介费:</label>
                             <input type="text" class="form-control" name="estateCapital" id="estateCapital" required minlength="2" placeholder="ex 200000" [(ngModel)]="estateCapital" />
-                            <div *ngIf="estateCapital.invalid && (estateCapital.dirty || estateCapital.touched)" class="alert alert-danger">
+                            <div *ngIf="estateCapital.toString().invalid && (estateCapital.toString().dirty || estateCapital.toString().touched)" class="alert alert-danger">
                                 <div *ngIf="estateCapital.errors.required">
                                     Name is required.
                                 </div>
@@ -186,20 +204,44 @@
                             <input type="text" class="form-control" name="status" id="field_status" placeholder="ex 1.91" [(ngModel)]="principalBalance" />
                         </div> -->
                         <div class="form-group">
-                                <label class="form-control-label" for="field_name">剩余贷款数贷款利率 (不含保险):</label>
-                                <input type="text" class="form-control" name="name" required id="field_name" [(ngModel)]="principalG" />
+                                <label class="form-control-label" for="field_principalG">剩余贷款数贷款利率 (不含保险):</label>
+                                <input type="text" class="form-control" name="principalG" required id="field_principalG" [(ngModel)]="principalG" />
+                                <div *ngIf="principalG.toString().dirty && principalG.toString().invalid">
+                                    <small class="form-text text-danger"
+                                       *ngIf="principalG.errors.required" jhiTranslate="settings.messages.validate.principalG.required">
+                                        Your first principalG is required.
+                                    </small>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label class="form-control-label" for="field_status">剩余贷Monthes数:</label>
-                                <input type="text" class="form-control" name="status" required id="field_status" [(ngModel)]="monthes" />
+                                <label class="form-control-label" for="field_monthes">剩余贷Monthes数:</label>
+                                <input type="text" class="form-control" name="monthes" required id="field_monthes" [(ngModel)]="monthes" />
+                                <div *ngIf="monthes.toString().dirty && monthes.toString().invalid">
+                                    <small class="form-text text-danger"
+                                       *ngIf="monthes.errors.required" jhiTranslate="settings.messages.validate.monthes.required">
+                                        Your first monthes is required.
+                                    </small>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label class="form-control-label" for="field_clientNumber">Rate:</label>
-                                <input type="text" class="form-control" name="clientNumber" required id="field_clientNumber" [(ngModel)]="rate" />
+                                <label class="form-control-label" for="field_rate">Rate:</label>
+                                <input type="text" class="form-control" name="rate" required id="field_rate" [(ngModel)]="rate" />
+                                <div *ngIf="rate.toString().dirty && rate.toString().invalid">
+                                    <small class="form-text text-danger"
+                                       *ngIf="rate.errors.required" jhiTranslate="settings.messages.validate.rate.required">
+                                        Your first rate is required.
+                                    </small>
+                                </div>
                             </div>
                         <div class="form-group">
-                            <label class="form-control-label" for="field_clientNumber">每月物业费:</label>
-                            <input type="text" class="form-control" name="clientNumber" required id="field_clientNumber" placeholder="ex 120" [(ngModel)]="fee" />
+                            <label class="form-control-label" for="field_fee">每月物业费:</label>
+                            <input type="text" class="form-control" name="fee" required id="field_fee" placeholder="ex 120" [(ngModel)]="fee" />
+                            <div *ngIf="fee.toString().dirty && fee.toString().invalid">
+                                <small class="form-text text-danger"
+                                   *ngIf="fee.errors.required" jhiTranslate="settings.messages.validate.fee.required">
+                                    Your first fee is required.
+                                </small>
+                            </div>
                         </div>
                         <!-- <div class="form-group">
                             <label class="form-control-label" for="field_clientNumber">家具:</label>
@@ -220,14 +262,26 @@
                             </section>
                         </div> -->
                         <div class="form-group">
-                            <label class="form-control-label" for="field_clientNumber">月毛租金:</label>
-                            <input type="text" class="form-control" name="clientNumber" required id="field_clientNumber" placeholder="ex 800" [(ngModel)]="rent" />
+                            <label class="form-control-label" for="field_rent">月毛租金:</label>
+                            <input type="text" class="form-control" name="rent" required id="field_rent" placeholder="ex 800" [(ngModel)]="rent" />
+                            <div *ngIf="rent.toString().dirty && rent.toString().invalid">
+                                <small class="form-text text-danger"
+                                   *ngIf="rent.errors.required" jhiTranslate="settings.messages.validate.rent.required">
+                                    Your first name is required.
+                                </small>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label class="form-control-label" for="field_clientNumber">月含charge租金:</label>
+                            <label class="form-control-label" for="field_rentWithFee">月含charge租金:</label>
                             <ng-template #popContentC>ex 880 （800+120*2/3）charge locative 约为整个charge 的2/3</ng-template>
                             <span class="badge badge-pill badge-primary" triggers="mouseenter:mouseleave" [ngbPopover]="popContentC" popoverTitle="Information">!</span>
-                            <input type="text" class="form-control" name="clientNumber" required id="field_clientNumber" placeholder="ex 880" [(ngModel)]="rentWithFee" />
+                            <input type="text" class="form-control" name="rentWithFee" required id="field_rentWithFee" placeholder="ex 880" [(ngModel)]="rentWithFee" />
+                            <div *ngIf="rentWithFee.toString().dirty && rentWithFee.toString().invalid">
+                                <small class="form-text text-danger"
+                                   *ngIf="rentWithFee.errors.required" jhiTranslate="settings.messages.validate.rentWithFee.required">
+                                    Your first rentWithFee is required.
+                                </small>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label class="form-control-label" for="field_clientNumber">每年才:</label>

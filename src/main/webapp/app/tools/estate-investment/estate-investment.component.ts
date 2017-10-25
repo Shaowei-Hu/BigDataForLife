@@ -64,18 +64,18 @@ export class EstateInvestmentComponent implements OnInit {
         this.accepte = true;
         this.year = 20;
 
-        this.taxRate = '0.3';
-        this.estateCapital = 240000;
-        this.principalG = 150000;
-        this.monthes = 230;
-        this.rent = 800;
-        this.rentWithFee = 880;
-        this.renovationCosts = 500;
-        this.otherCosts = 300;
-        this.month = 10.5;
-        this.fee = 100;
-        this.rate = 1.25;
-        this.propertyTax = 1400;
+        // this.taxRate = '0.3';
+        // this.estateCapital = 240000;
+        // this.principalG = 150000;
+        // this.monthes = 230;
+        // this.rent = 800;
+        // this.rentWithFee = 880;
+        // this.renovationCosts = 500;
+        // this.otherCosts = 300;
+        // this.month = 10.5;
+        // this.fee = 100;
+        // this.rate = 1.25;
+        // this.propertyTax = 1400;
 
         this.axe = [];
         this.taxFONCIERREEL = [];
