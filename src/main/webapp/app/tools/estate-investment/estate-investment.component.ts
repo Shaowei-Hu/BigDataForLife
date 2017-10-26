@@ -50,9 +50,20 @@ export class EstateInvestmentComponent implements OnInit {
     taxMICROBIC: number[];
     taxLMNPBICREEL: number[];
 
+    rentalIncomesMICROFONCIER: number[];
+    rentalIncomesFONCIERREEL: number[];
+    rentalIncomesMICROBIC: number[];
+    rentalIncomesLMNPBICREEL: number[];
     propertyIncomes: number[];
 
-    dataSet: any[];
+    pureIncomesMICROFONCIER: number[];
+    pureIncomesFONCIERREEL: number[];
+    pureIncomesMICROBIC: number[];
+    pureIncomesLMNPBICREEL: number[];
+
+    taxDataSet: any[];
+    incomeDataSet: any[];
+    pureIncomeDataSet: any[];
 
     constructor(
         private eventManager: JhiEventManager,
@@ -76,6 +87,7 @@ export class EstateInvestmentComponent implements OnInit {
         this.fee = 100;
         this.rate = 1.25;
         this.propertyTax = 1400;
+        this.prediction = 0.1;
 
         this.axe = [];
         this.taxFONCIERREEL = [];
@@ -83,9 +95,20 @@ export class EstateInvestmentComponent implements OnInit {
         this.taxMICROBIC = [];
         this.taxMICROFONCIER = [];
 
+        this.rentalIncomesFONCIERREEL = [];
+        this.rentalIncomesLMNPBICREEL = [];
+        this.rentalIncomesMICROBIC = [];
+        this.rentalIncomesMICROFONCIER = [];
         this.propertyIncomes = [];
 
-        this.dataSet = [];
+        this.pureIncomesFONCIERREEL = [];
+        this.pureIncomesLMNPBICREEL = [];
+        this.pureIncomesMICROBIC = [];
+        this.pureIncomesMICROFONCIER = [];
+
+        this.taxDataSet = [];
+        this.incomeDataSet = [];
+        this.pureIncomeDataSet = [];
     }
 
     calculate() {
@@ -94,7 +117,10 @@ export class EstateInvestmentComponent implements OnInit {
         this.taxLMNPBICREEL = [];
         this.taxMICROBIC = [];
         this.taxMICROFONCIER = [];
-        this.dataSet = [];
+
+        this.taxDataSet = [];
+        this.incomeDataSet = [];
+        this.pureIncomeDataSet = [];
 
         this.getAxe();
         this.getMonthlyPayment();
@@ -104,10 +130,25 @@ export class EstateInvestmentComponent implements OnInit {
         this.MICROBIC();
         this.LMNPBICREEL();
 
-        this.dataSet = [{data: this.taxMICROFONCIER, label: 'MICROFONCIER'},
+        this.getRentalIncome();
+        this.getPropertyIncome();
+        this.getPureIncome();
+
+        this.taxDataSet = [{data: this.taxMICROFONCIER, label: 'MICROFONCIER'},
                         {data: this.taxFONCIERREEL, label: 'FONCIERREEL'},
                         {data: this.taxMICROBIC, label: 'MICROBIC'},
                         {data: this.taxLMNPBICREEL, label: 'LMNPBICREEL'}];
+
+        this.incomeDataSet = [{data: this.rentalIncomesMICROFONCIER, label: 'rentalIncomes MICROFONCIER'},
+                        {data: this.rentalIncomesFONCIERREEL, label: 'rentalIncomes FONCIERREEL'},
+                        {data: this.rentalIncomesMICROBIC, label: 'rentalIncomes MICROBIC'},
+                        {data: this.rentalIncomesLMNPBICREEL, label: 'rentalIncomes LMNPBICREEL'},
+                        {data: this.propertyIncomes, label: 'property Incomes'}];
+
+        this.pureIncomeDataSet = [{data: this.pureIncomesMICROFONCIER, label: 'pureIncomes MICROFONCIER'},
+                        {data: this.pureIncomesFONCIERREEL, label: 'pureIncomes FONCIERREEL'},
+                        {data: this.pureIncomesMICROBIC, label: 'pureIncomes MICROBIC'},
+                        {data: this.pureIncomesLMNPBICREEL, label: 'pureIncomes LMNPBICREEL'}];
     }
 
     getAxe() {
@@ -154,18 +195,45 @@ export class EstateInvestmentComponent implements OnInit {
     LMNPBICREEL() {
         for (let i = 0; i < this.year; i ++) {
             const tax = 0;
-            this.taxLMNPBICREEL.push(tax);
+            const fee = 550;
+            this.taxLMNPBICREEL.push(fee);
         }
     }
 
     getRentalIncome() {
-        return this.rentWithFee * this.month - this.renovationCosts - this.otherCosts - this.monthlyPayment * 12 - this.propertyTax;
+        let income: number = this.rentWithFee * this.month - this.renovationCosts - this.otherCosts - this.monthlyPayment * 12 - this.propertyTax - this.fee * 12;
+        this.rentalIncomesMICROFONCIER.push(income - this.taxMICROFONCIER[0]);
+        this.rentalIncomesFONCIERREEL.push(income - this.taxFONCIERREEL[0]);
+        this.rentalIncomesMICROBIC.push(income - this.taxMICROBIC[0]);
+        this.rentalIncomesLMNPBICREEL.push(income - this.taxLMNPBICREEL[0]);
+        for (let i = 1; i < this.year; i ++) {
+            income = this.rentWithFee * this.month - this.otherCosts - this.monthlyPayment * 12 - this.propertyTax - this.fee * 12;
+            this.rentalIncomesMICROFONCIER.push(income - this.taxMICROFONCIER[i]);
+            this.rentalIncomesFONCIERREEL.push(income - this.taxFONCIERREEL[i]);
+            this.rentalIncomesMICROBIC.push(income - this.taxMICROBIC[i]);
+            this.rentalIncomesLMNPBICREEL.push(income - this.taxLMNPBICREEL[i]);
+        }
     }
 
     getPropertyIncome() {// !
+        const years = Math.floor(this.monthes / 12);
         for (let i = 0; i < this.year; i ++) {
-            const income = this.amortization[i].principalY + this.estateCapital * 0.92 * this.prediction;
+            let income = 0;
+            if (i < years) {
+                income = this.amortization[i].principalY + this.estateCapital * 0.92 * this.prediction;
+            } else {
+                income = this.estateCapital * 0.92 * this.prediction;
+            }
             this.propertyIncomes.push(income);
+        }
+    }
+
+    getPureIncome() {
+        for (let i = 0; i < this.year; i ++) {
+            this.pureIncomesMICROFONCIER.push(this.propertyIncomes[i] + this.rentalIncomesMICROFONCIER[i]);
+            this.pureIncomesFONCIERREEL.push(this.propertyIncomes[i]  + this.rentalIncomesFONCIERREEL[i]);
+            this.pureIncomesMICROBIC.push(this.propertyIncomes[i]  + this.rentalIncomesMICROBIC[i]);
+            this.pureIncomesLMNPBICREEL.push(this.propertyIncomes[i]  + this.rentalIncomesLMNPBICREEL[i]);
         }
     }
 

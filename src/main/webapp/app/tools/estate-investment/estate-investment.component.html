@@ -266,9 +266,15 @@
             </div>
         </div>
     <br>
-    <div class="row">
-        <div class="col-12" *ngIf="taxFONCIERREEL.length>0">
-                <chart-component [chartLabels]="axe" [chartData]="dataSet" [chartType]="'line'"></chart-component>
+    <div class="row justify-content-center">
+        <div class="col-10" *ngIf="taxFONCIERREEL.length>0">
+                <chart-component [chartLabels]="axe" [chartData]="taxDataSet" [chartType]="'line'"></chart-component>
+        </div>
+        <div class="col-10" *ngIf="taxFONCIERREEL.length>0">
+            <chart-component [chartLabels]="axe" [chartData]="incomeDataSet" [chartType]="'line'"></chart-component>
+        </div>
+        <div class="col-10" *ngIf="taxFONCIERREEL.length>0">
+            <chart-component [chartLabels]="axe" [chartData]="pureIncomeDataSet" [chartType]="'line'"></chart-component>
         </div>
     </div>
 </div>
