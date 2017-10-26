@@ -33,7 +33,7 @@ export class EstateInvestmentComponent implements OnInit {
     otherCosts: number;
     prediction: number;
 
-    year: number;
+    year: number; // simulation years
 
     accepte: boolean;
 
@@ -43,6 +43,8 @@ export class EstateInvestmentComponent implements OnInit {
     interestG: number;
     monthlyPayment: number;
     amortization: any[];
+
+    investmentCapital: number;
 
     axe: number[];
     taxMICROFONCIER: number[];
@@ -75,20 +77,21 @@ export class EstateInvestmentComponent implements OnInit {
         this.accepte = true;
         this.year = 20;
 
-        this.taxRate = '0.3';
-        this.estateCapital = 240000;
-        this.principalG = 150000;
-        this.monthes = 230;
-        this.rent = 800;
-        this.rentWithFee = 880;
-        this.renovationCosts = 500;
-        this.otherCosts = 300;
-        this.month = 10.5;
-        this.fee = 100;
-        this.rate = 1.25;
-        this.propertyTax = 1400;
-        this.prediction = 0.1;
+        // this.taxRate = '0.3';
+        // this.estateCapital = 240000;
+        // this.principalG = 150000;
+        // this.monthes = 230;
+        // this.rent = 800;
+        // this.rentWithFee = 880;
+        // this.renovationCosts = 500;
+        // this.otherCosts = 300;
+        // this.month = 10.5;
+        // this.fee = 100;
+        // this.rate = 1.25;
+        // this.propertyTax = 1400;
+        // this.prediction = 0.1;
 
+        this.investmentCapital = 0;
         this.axe = [];
         this.taxFONCIERREEL = [];
         this.taxLMNPBICREEL = [];
@@ -122,6 +125,7 @@ export class EstateInvestmentComponent implements OnInit {
         this.incomeDataSet = [];
         this.pureIncomeDataSet = [];
 
+        this.getInvestmentCapital();
         this.getAxe();
         this.getMonthlyPayment();
         this.getAmortizationByYear();
@@ -156,6 +160,10 @@ export class EstateInvestmentComponent implements OnInit {
             this.axe.push(i);
         }
         console.log(this.axe);
+    }
+
+    getInvestmentCapital() {
+        this.investmentCapital = this.estateCapital - this.principalG + this.renovationCosts;
     }
 
     MICROFONCIER() {
@@ -235,6 +243,31 @@ export class EstateInvestmentComponent implements OnInit {
             this.pureIncomesMICROBIC.push(this.propertyIncomes[i]  + this.rentalIncomesMICROBIC[i]);
             this.pureIncomesLMNPBICREEL.push(this.propertyIncomes[i]  + this.rentalIncomesLMNPBICREEL[i]);
         }
+    }
+
+    getPureIncomeAccumulated(n: number, type: string) {
+        let value = 0;
+        if (type === 'MICROFONCIER') {
+            for (let i = 0; i <= n && i < this.axe.length; i ++) {
+                value += this.pureIncomesMICROFONCIER[i];
+            }
+        }
+        if (type === 'FONCIERREEL') {
+            for (let i = 0; i <= n && i < this.axe.length; i ++) {
+                value += this.pureIncomesFONCIERREEL[i];
+            }
+        }
+        if (type === 'MICROBIC') {
+            for (let i = 0; i <= n && i < this.axe.length; i ++) {
+                value += this.pureIncomesMICROBIC[i];
+            }
+        }
+        if (type === 'LMNPBICREEL') {
+            for (let i = 0; i <= n && i < this.axe.length; i ++) {
+                value += this.pureIncomesLMNPBICREEL[i];
+            }
+        }
+        return value;
     }
 
     getMonthlyPayment() {

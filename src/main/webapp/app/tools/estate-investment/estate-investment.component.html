@@ -268,13 +268,81 @@
     <br>
     <div class="row justify-content-center">
         <div class="col-10" *ngIf="taxFONCIERREEL.length>0">
-                <chart-component [chartLabels]="axe" [chartData]="taxDataSet" [chartType]="'line'"></chart-component>
+            <div class="card">
+                    <div class="card-header">
+                        Tax comparaison
+                    </div>
+                    <div class="card-body">
+                            <chart-component [chartLabels]="axe" [chartData]="taxDataSet" [chartType]="'line'"></chart-component>
+                    </div>
+            </div>
         </div>
+        <br>
         <div class="col-10" *ngIf="taxFONCIERREEL.length>0">
-            <chart-component [chartLabels]="axe" [chartData]="incomeDataSet" [chartType]="'line'"></chart-component>
+            <div class="card">
+                    <div class="card-header">
+                        Income comparaison
+                    </div>
+                    <div class="card-body">
+                        <chart-component [chartLabels]="axe" [chartData]="incomeDataSet" [chartType]="'line'"></chart-component>
+                    </div>
+            </div>
         </div>
+        <br>
         <div class="col-10" *ngIf="taxFONCIERREEL.length>0">
-            <chart-component [chartLabels]="axe" [chartData]="pureIncomeDataSet" [chartType]="'line'"></chart-component>
+            <div class="card">
+                    <div class="card-header">
+                        Pure income comparaison
+                    </div>
+                    <div class="card-body">
+                        <chart-component [chartLabels]="axe" [chartData]="pureIncomeDataSet" [chartType]="'line'"></chart-component>
+                    </div>
+            </div>
+        </div>
+        <br>
+        <div class="col-10" *ngIf="taxFONCIERREEL.length>0">
+            <div class="card">
+                <div class="card-header">
+                    Pure income table
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Year</th>
+                                <th colspan="2">MICROFONCIER</th>
+                                <th colspan="2">FONCIERREEL</th>
+                                <th colspan="2">MICROBIC</th>
+                                <th colspan="2">LMNPBICREEL</th>
+                            </tr>
+                            <tr>
+                                <th>Year</th>
+                                <th>Pure Income</th>
+                                <th>Respons rate</th>
+                                <th>Pure Income</th>
+                                <th>Respons rate</th>
+                                <th>Pure Income</th>
+                                <th>Respons rate</th>
+                                <th>Pure Income</th>
+                                <th>Respons rate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let n of axe">
+                                <td>{{n+1}}</td>
+                                <td>{{getPureIncomeAccumulated(n, 'MICROFONCIER') | number:'1.2-2'}}</td>
+                                <td>{{getPureIncomeAccumulated(n, 'MICROFONCIER')/investmentCapital*100 | number:'1.2-2'}}%</td>
+                                <td>{{getPureIncomeAccumulated(n, 'FONCIERREEL') | number:'1.2-2'}}</td>
+                                <td>{{getPureIncomeAccumulated(n, 'FONCIERREEL')/investmentCapital*100 | number:'1.2-2'}}%</td>
+                                <td>{{getPureIncomeAccumulated(n, 'MICROBIC') | number:'1.2-2'}}</td>
+                                <td>{{getPureIncomeAccumulated(n, 'MICROBIC')/investmentCapital*100 | number:'1.2-2'}}%</td>
+                                <td>{{getPureIncomeAccumulated(n, 'LMNPBICREEL') | number:'1.2-2'}}</td>
+                                <td>{{getPureIncomeAccumulated(n, 'LMNPBICREEL')/investmentCapital*100 | number:'1.2-2'}}%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
