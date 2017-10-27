@@ -2,7 +2,7 @@
     <jhi-alert-error></jhi-alert-error>
     <!-- Jumbotron -->
     <div class="jumbotron">
-        <h1>Estate investment evaluation</h1>
+        <h1>Rent or buy comparaison</h1>
         <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
             nibh, ut fermentum massa justo sit amet.</p>
     </div>
@@ -172,14 +172,14 @@
                         <div class="form-group">
                             <label class="form-control-label" for="estateCapital">总房价（包含公证费及中介费:</label>
                             <input type="text" class="form-control" name="estateCapital" id="estateCapital" required minlength="2" placeholder="ex 200000" [(ngModel)]="estateCapital" />
-                            <!-- <div *ngIf="estateCapital.invalid && (estateCapital.dirty || estateCapital.touched)" class="alert alert-danger">
+                            <div *ngIf="estateCapital.invalid && (estateCapital.dirty || estateCapital.touched)" class="alert alert-danger">
                                 <div *ngIf="estateCapital.errors.required">
                                     Name is required.
                                 </div>
                                 <div *ngIf="estateCapital.errors.minlength">
                                     Name must be at least 4 characters long.
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                         <!-- <div class="form-group">
                             <label class="form-control-label" for="field_status">剩余贷款数贷款利率 (不含保险):</label>

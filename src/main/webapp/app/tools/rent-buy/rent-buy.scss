@@ -1,0 +1,84 @@
+.jumbotron {
+    text-align: center;
+//    background-color: transparent;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+$blue:    #007bff !default;
+// section {
+// // display: flex;
+// // flex-flow: row wrap;
+// // margin-bottom: 1rem;
+// }
+section > div {
+flex: 1;
+padding-top: 0.5rem;
+// &:not(:first-of-type) {
+//   padding-left: 2rem;
+// }
+}
+
+input[type="radio"] {
+display: none;
+&:not(:disabled) ~ label {
+    cursor: pointer;
+}
+&:disabled ~ label {
+    color: hsla(150, 5%, 75%, 1);
+    border-color: hsla(150, 5%, 75%, 1);
+    box-shadow: none;
+    cursor: not-allowed;
+}
+}
+section label {
+height: 2.5rem;
+display: block;
+background: white;
+border: 1px solid #ccc;
+border-radius: 5px;
+padding-top: 0.3rem;
+// margin-bottom: 0.5rem;
+text-align: center;
+position: relative;
+}
+input[type="radio"]:checked + label {
+background: $blue;
+color: #fff;
+&::after {
+    color: hsla(215, 5%, 25%, 1);
+    font-family: FontAwesome;
+    border: 2px solid $blue;
+    content: "\f00c";
+    font-size: 16px;
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 28px;
+    width: 28px;
+    line-height: 23px;
+    text-align: center;
+    border-radius: 50%;
+    background: white;
+}
+}
+// input[type="radio"]#control_05:checked + label {
+// background: #f0ad4e;
+// border-color: #eea236;
+// }
+
+section div label span {
+    margin-top: 0.5rem;
+    font-family: sans-serif;
+}
+
+small {
+    color: grey;
+}
+
+@media only screen and (max-width: 768px) {
+section {
+    flex-direction: column;
+}
+} 
