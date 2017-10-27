@@ -7,14 +7,14 @@ import { Account, LoginModalService, Principal } from '../../shared';
 import { ChartComponent} from '../../shared/chart/chart.component';
 
 @Component({
-    selector: 'jhi-estate-investment',
-    templateUrl: './estate-investment.component.html',
+    selector: 'jhi-rent-buy',
+    templateUrl: './rent-buy.component.html',
     styleUrls: [
-        'estate-investment.scss'
+        'rent-buy.scss'
     ]
 
 })
-export class EstateInvestmentComponent implements OnInit {
+export class RentOrBuyComponent implements OnInit {
 
     name: string;
     telephone: string;
@@ -120,17 +120,6 @@ export class EstateInvestmentComponent implements OnInit {
         this.taxLMNPBICREEL = [];
         this.taxMICROBIC = [];
         this.taxMICROFONCIER = [];
-
-        this.rentalIncomesFONCIERREEL = [];
-        this.rentalIncomesLMNPBICREEL = [];
-        this.rentalIncomesMICROBIC = [];
-        this.rentalIncomesMICROFONCIER = [];
-        this.propertyIncomes = [];
-
-        this.pureIncomesFONCIERREEL = [];
-        this.pureIncomesLMNPBICREEL = [];
-        this.pureIncomesMICROBIC = [];
-        this.pureIncomesMICROFONCIER = [];
 
         this.taxDataSet = [];
         this.incomeDataSet = [];
