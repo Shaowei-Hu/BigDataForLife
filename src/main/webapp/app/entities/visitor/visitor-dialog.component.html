@@ -1,0 +1,59 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myVisitorLabel" jhiTranslate="bigDataForLifeApp.visitor.home.createOrEditLabel">Create or edit a Visitor</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!visitor.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="visitor.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="bigDataForLifeApp.visitor.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="visitor.name"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="bigDataForLifeApp.visitor.ip" for="field_ip">Ip</label>
+            <input type="text" class="form-control" name="ip" id="field_ip"
+                [(ngModel)]="visitor.ip"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="bigDataForLifeApp.visitor.browser" for="field_browser">Browser</label>
+            <input type="text" class="form-control" name="browser" id="field_browser"
+                [(ngModel)]="visitor.browser"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="bigDataForLifeApp.visitor.information" for="field_information">Information</label>
+            <input type="text" class="form-control" name="information" id="field_information"
+                [(ngModel)]="visitor.information"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="bigDataForLifeApp.visitor.arriveDate" for="field_arriveDate">Arrive Date</label>
+            <div class="d-flex">
+                <input id="field_arriveDate" type="datetime-local" class="form-control" name="arriveDate" [(ngModel)]="visitor.arriveDate"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="bigDataForLifeApp.visitor.leaveDate" for="field_leaveDate">Leave Date</label>
+            <div class="d-flex">
+                <input id="field_leaveDate" type="datetime-local" class="form-control" name="leaveDate" [(ngModel)]="visitor.leaveDate"
+                  />
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

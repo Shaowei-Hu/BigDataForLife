@@ -1,0 +1,35 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ip",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "browser",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "information",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "arriveDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "leaveDate",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20171101083453",
+    "entityTableName": "visitor",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl"
+}

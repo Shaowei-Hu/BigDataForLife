@@ -1,0 +1,27 @@
+{
+    "bigDataForLifeApp": {
+        "visitor" : {
+            "home": {
+                "title": "Visitors",
+                "createLabel": "Créer un nouveau Visitor",
+                "createOrEditLabel": "Créer ou éditer un Visitor",
+                "search": "Recherche pour Visitor"
+            },
+            "created": "Un nouveau Visitor a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Visitor avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Visitor avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Visitor {{ id }} ?"
+            },
+            "detail": {
+                "title": "Visitor"
+            },
+            "name": "Name",
+            "ip": "Ip",
+            "browser": "Browser",
+            "information": "Information",
+            "arriveDate": "Arrive Date",
+            "leaveDate": "Leave Date"
+        }
+    }
+}

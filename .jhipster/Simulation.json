@@ -1,0 +1,47 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "telephone",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "taxLevel",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "condition",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "intention",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ip",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "information",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20171101083454",
+    "entityTableName": "simulation",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl"
+}

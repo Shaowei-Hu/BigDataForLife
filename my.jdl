@@ -1,0 +1,39 @@
+entity Visitor {
+	name String,
+    ip String,
+    browser String,
+	information String,
+    arriveDate ZonedDateTime,
+    leaveDate ZonedDateTime,
+}
+
+entity Simulation {
+	name String,
+    email String,
+    telephone String,
+    taxLevel String,
+    condition String,
+    intention String,
+    ip String,
+	information String,
+    date ZonedDateTime,
+}
+
+entity Message {
+	name String,
+    email String,
+    subject String,
+    message String,
+    ip String,
+	information String,
+    date ZonedDateTime,
+}
+
+
+// Set pagination options
+paginate Visitor, Simulation with infinite-scroll
+paginate Message with pagination
+
+// Set service options to all except few
+service all with serviceImpl 
+// Set an angular suffix

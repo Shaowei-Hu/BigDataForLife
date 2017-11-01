@@ -1,0 +1,30 @@
+{
+    "bigDataForLifeApp": {
+        "simulation" : {
+            "home": {
+                "title": "Simulations",
+                "createLabel": "建立一筆新的 Simulation",
+                "createOrEditLabel": "建立或編輯 Simulation",
+                "search": "搜尋 Simulation"
+            },
+            "created": "新的 Simulation 建立成功，識別碼為 {{ param }}",
+            "updated": "識別碼為 {{ param }} 的 Simulation 更新成功",
+            "deleted": "識別碼為 {{ param }} 的 Simulation 刪除成功",
+            "delete": {
+                "question": "您確定要刪除 Simulation {{ id }} 嗎?"
+            },
+            "detail": {
+                "title": "Simulation"
+            },
+            "name": "Name",
+            "email": "Email",
+            "telephone": "Telephone",
+            "taxLevel": "Tax Level",
+            "condition": "Condition",
+            "intention": "Intention",
+            "ip": "Ip",
+            "information": "Information",
+            "date": "Date"
+        }
+    }
+}

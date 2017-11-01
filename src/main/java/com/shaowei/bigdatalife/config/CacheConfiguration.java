@@ -42,6 +42,9 @@ public class CacheConfiguration {
             cm.createCache(com.shaowei.bigdatalife.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.shaowei.bigdatalife.domain.User.class.getName() + ".authorities", jcacheConfiguration);
             cm.createCache(com.shaowei.bigdatalife.domain.SocialUserConnection.class.getName(), jcacheConfiguration);
+            cm.createCache(com.shaowei.bigdatalife.domain.Visitor.class.getName(), jcacheConfiguration);
+            cm.createCache(com.shaowei.bigdatalife.domain.Simulation.class.getName(), jcacheConfiguration);
+            cm.createCache(com.shaowei.bigdatalife.domain.Message.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

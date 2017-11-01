@@ -1,0 +1,85 @@
+<div>
+    <h2>
+        <span jhiTranslate="bigDataForLifeApp.simulation.home.title">Simulations</span>
+        <button class="btn btn-primary float-right jh-create-entity create-simulation" [routerLink]="['/', { outlets: { popup: ['simulation-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="bigDataForLifeApp.simulation.home.createLabel">
+            Create new Simulation
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'bigDataForLifeApp.simulation.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="simulations">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="bigDataForLifeApp.simulation.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="email"><span jhiTranslate="bigDataForLifeApp.simulation.email">Email</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="telephone"><span jhiTranslate="bigDataForLifeApp.simulation.telephone">Telephone</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="taxLevel"><span jhiTranslate="bigDataForLifeApp.simulation.taxLevel">Tax Level</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="condition"><span jhiTranslate="bigDataForLifeApp.simulation.condition">Condition</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="intention"><span jhiTranslate="bigDataForLifeApp.simulation.intention">Intention</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ip"><span jhiTranslate="bigDataForLifeApp.simulation.ip">Ip</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="information"><span jhiTranslate="bigDataForLifeApp.simulation.information">Information</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="date"><span jhiTranslate="bigDataForLifeApp.simulation.date">Date</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let simulation of simulations ;trackBy: trackId">
+                <td><a [routerLink]="['../simulation', simulation.id ]">{{simulation.id}}</a></td>
+                <td>{{simulation.name}}</td>
+                <td>{{simulation.email}}</td>
+                <td>{{simulation.telephone}}</td>
+                <td>{{simulation.taxLevel}}</td>
+                <td>{{simulation.condition}}</td>
+                <td>{{simulation.intention}}</td>
+                <td>{{simulation.ip}}</td>
+                <td>{{simulation.information}}</td>
+                <td>{{simulation.date | date:'medium'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../simulation', simulation.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'simulation/'+ simulation.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'simulation/'+ simulation.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
