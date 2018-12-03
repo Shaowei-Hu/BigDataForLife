@@ -57,7 +57,7 @@ spring:
         host: smtp.zoho.com
         port: 587
         username: rd@source-v.com
-        password: progress625
+        password: **********
         protocol: smtp
         tls: true
         properties.mail.smtp:
